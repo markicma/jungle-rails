@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Thank you for your order</h1>
+    <p>You ordered:</p>
+    <% @products.each do |product| %>
+      <p><%=product.quantity%> <%=product.name%> for  $<%=product.item_price_cents/100.00%></p>
+    <% end %>
+    <p>Total: $<%= (@order.total_cents/100.00).round(2) %></p>
+  </body>
+</html>
