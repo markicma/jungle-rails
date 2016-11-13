@@ -1,0 +1,8 @@
+<% reviews.each do |review|%>
+  <h4>Rating: <%= review.rating %></h4>
+  <p><%= review.description %>
+  <% if current_user && current_user.id == review.user_id %>
+    <%= link_to fa_icon('trash'), [@product, Review.find(review.id)], class: 'btn btn-sm', method: :delete, data: { confirm: "Are you sure?" } %>
+  <% end %>
+  </p>
+<% end %>

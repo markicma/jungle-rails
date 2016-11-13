@@ -26,6 +26,18 @@
       </div>
     </div>
 
+    <% if current_user %>
+      <%= form_for [@product, Review.new] do |form|%>
+        <%= form.text_area :description %>
+        <%= form.select(:rating, [1, 2, 3, 4, 5]) %>
+        <%= form.submit 'Add comment'%>
+      <% end %>
+    <% end %>
+    
+    <div class="row">
+      <%= render 'review', reviews: @reviews.reverse%>
+    </div>
+
   </article>
 
 </section>
