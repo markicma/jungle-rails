@@ -10,6 +10,8 @@ require 'capybara/rails'
 require 'capybara/rspec'
 require 'capybara/poltergeist'
 
+# Specs flagged with `js: true` will use Capybara's JS driver. Set
+# that JS driver to :poltergeist
 Capybara.javascript_driver = :poltergeist
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
