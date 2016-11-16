@@ -18,6 +18,16 @@ raise "Development seeds only (for now)!" unless Rails.env.development?
 
 # Let's do this ...
 
+## USERS
+
+user = User.create!({
+  first_name: "test",
+  last_name: "testname",
+  email: "test@test.com",
+  password: "test",
+  password_confirmation: "test"
+  })
+
 ## CATEGORIES
 
 puts "Finding or Creating Categories ..."
@@ -121,7 +131,7 @@ cat3.products.create!({
   price: 987.65
 })
 
-cat3.products.create!({
+product = cat3.products.create!({
   name:  'Red Bookshelf',
   description: Faker::Hipster.paragraph(4),
   image: open_asset('furniture3.jpg'),
@@ -129,8 +139,8 @@ cat3.products.create!({
   price: 2_483.75
 })
 
-Review.create(product_id: 12, user_id: 1, description: "Nice Shelf", rating: 5)
-Review.create(product_id: 12, user_id: 1, description: "I have a lot of books, this is great", rating: 4)
-Review.create(product_id: 12, user_id: 1, description: "I don't like red", rating: 1)
+Review.create(product: product, user: user, description: "Nice Shelf", rating: 5)
+Review.create(product: product, user: user, description: "I have a lot of books, this is great", rating: 4)
+Review.create(product: product, user: user, description: "I don't like red", rating: 1)
 
 puts "DONE!"
